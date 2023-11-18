@@ -15,11 +15,12 @@
     <td  align="center">오유진</a></td>
   </tr>
   <tr width="100%">
-  <td  align="center"><a href="https://imgbb.com/"><a href="https://imgbb.com/"><img src="https://i.ibb.co/dLxQ0GQ/image.jpg" alt="image" border="0" width = "90px"></a></td>
-  <td  align="center"><a href="https://imgbb.com/"><a href="https://imgbb.com/"><img src="https://i.ibb.co/hKP4hKS/image.png" alt="image" border="0" width = "90px"></a></td>
-  <td  align="center"><a href="https://ibb.co/RzQjL2D"><img src="https://i.ibb.co/SRVfqN3/image.jpg" alt="image" border="0" width="90px"></a></td>
-    <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/cXK1nX2/image.png" alt="image" border="0" width="90px"></a></td>
-  <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/GshWWjD/image.png" alt="image" border="0" width="90px"></a></td>
+   <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+    <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+     <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+      <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+       <td  align="center"><a href="https://imgbb.com/"><img src="https://i.ibb.co/sWXnzcJ/befbedf87e51f5b02aac8b882ada60fd-sticker.png" alt="befbedf87e51f5b02aac8b882ada60fd-sticker" border="0" width="90px"></a></td>
+  
   </tr>
   <tr width="100%">
   <td  align="center">UX/UI</td>
