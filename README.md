@@ -55,5 +55,24 @@
 #### pip install django  // 장고 설치 
 #### python manage.py runserver  // 서버 실행
 
+### ![10팀_2차 최종_page-0001](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/66ba7e69-6ccb-476c-b6f9-41b56957525e)
+### ![10팀_2차 최종_page-0002](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/0605d309-09e7-407e-b6ff-a4e2d0b63791)
+### ![10팀_2차 최종_page-0003](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/4816daa6-6b3b-40df-984a-816afb5c7e64)
+### ![10팀_2차 최종_page-0004](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/b4868437-c42f-49af-b9ec-09bade4352f1)
+### ![10팀_2차 최종_page-0005](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/8a274628-a1f8-4958-8e04-ffb3841855b1)
+### ![10팀_2차 최종_page-0006](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/05e82432-42b9-49a0-be7e-835fa919b226)
+### ![10팀_2차 최종_page-0007](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/91608318-825c-42be-bb3e-a7d0822b7bad)
+### ![10팀_2차 최종_page-0008](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/04ab1084-55f8-47fd-9b0b-3a43eaae943c)
+### ![10팀_2차 최종_page-0009](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/b8ab9496-e84b-47ab-858d-ae676c9060c0)
+### ![10팀_2차 최종_page-0010](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/793a7ee5-d28a-4385-9942-b7253340cee3)
+### ![10팀_2차 최종_page-0011](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/9074140e-3ee4-4b6e-b4b6-656794e9052a)
+### ![10팀_2차 최종_page-0012](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/e911928c-9f1c-4643-a9aa-0960d2309c38)
+### ![10팀_2차 최종_page-0013](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/23d6314b-f60d-4582-b71a-37a9b76c2ee7)
+### ![10팀_2차 최종_page-0014](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/af521c26-101b-4836-89e1-3ee291ef2274)
+### ![10팀_2차 최종_page-0015](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/6ef72429-fe70-488b-8a12-af61d5682983)
+### ![10팀_2차 최종_page-0016](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/19f7f876-e6df-4c87-b8f9-d6dae2554a00)
+### ![10팀_2차 최종_page-0017](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/26e83844-d5c9-4584-810f-127b13b05b5e)
+### ![10팀_2차 최종_page-0018](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/4d3ea951-25bd-4457-9f4f-d2362f854d42)
+### ![10팀_2차 최종_page-0019](https://github.com/Se0-hyun/Line4thon_pepero/assets/80439045/3b96c076-e89e-414d-af94-97229fbd7ac7)
 
  
