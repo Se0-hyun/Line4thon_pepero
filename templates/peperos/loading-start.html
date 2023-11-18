@@ -1,0 +1,91 @@
+{% extends 'base.html'%}
+    {% block title %}로딩 화면{% endblock %}
+    {% load static %}
+    {% block content %}
+    <style>
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+          background-color: #faf9f5;
+          display: flex;
+          justify-content: center;
+          align-items:center;
+          flex-direction: column; 
+          min-height: 100vh;
+          overflow: hidden;  
+      }
+  
+
+      .main-form {
+        width: 390px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .header {
+        text-align: center;
+        position: relative;
+        justify-content: center;
+      }
+
+      #text1 {
+        color: #4b2a0b;
+        text-align: center;
+        font-family: Inter;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      #text2 {
+        font-size: 12px;
+        font-weight: 600;
+        color: #885c33;
+        margin-top:-5%;
+      }
+
+      #text3 {
+        position: relative;
+        color: #4b2a0b;
+        text-align: center;
+        font-family: Inter;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      .pepero-img img {
+        position: relative;
+        top: -20%;
+        height: 488px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="main-form">
+      <div class="header">
+        <p id="text1">빼빼로를 만들고, 메세지를 써보세요!</p>
+        <p id="text2">당신의 빼빼로를 모두에게 보내주세요!</p>
+        <p id="text3">먼저, 빼빼로를 만들어 볼까요?</p>
+      </div>
+      <div class="pepero-img">
+        <!-- Replace the src attribute with the correct path to your image -->
+        <img src="{% static 'assets/pepero-letter1.png' %}"  alt="빼빼로 편지 이미지1">
+      </div>
+    </section>
+
+    <script>
+      // DOM이 완전히 로드된 후 실행될 함수
+      window.onload = function () {
+        // 1000밀리초(1초) 후에 실행될 함수를 setTimeout을 이용하여 설정
+        setTimeout(function () {
+          // 1단계 페이지로 리다이렉트
+          window.location.href = '{% url 'pepero:pepero_choco' %}';
+        }, 1000);
+      };
+    </script> 
+  </body>
+  {% endblock %}

@@ -1,0 +1,345 @@
+{% extends 'base.html'%}
+    {% block title %}빼빼로 만들기 3단계{% endblock %}
+    {% load static %}
+    {% block content %}
+  <!--css 파일-->
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      background-color: #faf9f5;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      flex-direction: column; 
+      min-height: 100vh;
+      overflow: hidden;  
+    }
+
+    .make3-form {
+      width: 390px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      width:70%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #text1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
+      margin: 0 auto;
+    }
+
+    #text2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
+
+    .make3 {
+      width:60%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .show {
+      width: 48%;
+      padding: 10px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      position: relative;
+    }
+
+    .option {
+      width: 48%;
+      padding: 10px;
+      margin: auto;
+    }
+
+    .option button {
+      width: 117px;
+      height: 73px;
+      display: block;
+      background-color: #f7f7f7;
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 16px;
+      border: 1px solid #cbcbcb;
+    }
+
+    #pepero2 {
+      height: 477px;
+      width: 40px;
+      position: absolute;
+    }
+
+    #make3Image {
+      margin: auto;
+      margin-top:20px;
+      margin-right:55px;
+      height: 480px; 
+    }
+
+    #make3Image.img {
+      position: absoulute;
+      z-index: 2;
+    }
+    
+
+    .next {
+      display: flex;
+      justify-content: space-between;
+      width: 70%; 
+      margin: 0 auto; 
+    }
+
+    .return,
+    .letter {
+      width: 120px;
+      height: 44px;
+      margin-top: 5px;
+      border-radius: 16px;
+      border: 1px solid;
+    }
+
+    .return {
+      background-color: #401f00;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .letter {
+      background-color: #eaded8;
+      color: #401f00;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+    }
+    #chocoImage {
+      margin-bottom:130px;
+      position: absolute;
+      z-index: 1;
+    }
+    #sauceImage {
+      margin: auto;
+      margin-bottom:140px;
+      position: absolute;
+      z-index: 1;
+    }
+  </style>
+  <body>
+    <!--전체 화면을 포함하는 section 박스-->
+    <section class="make3-form">
+      <!--header를 포함하는 div 태그-->
+      <div class="header">
+        <p id="text1">3단계 : 빼빼로 토핑하기!</p>
+        <p id="text2">
+          어떤 토핑을 사용할까요? <br />버튼을 눌러 선택해주세요!
+        </p>
+      </div>
+      <!--빼빼로를 만드는 화면을 포함하는 div 태그-->
+      <div class="make3">
+        <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
+        <div class="show">
+          <img src="{% static 'assets/pepero.png' %}" id="pepero2" />
+          <img src="" id ="chocoImage"/>
+          <img src="" id ="sauceImage"/>
+          <div id="make3Image"></div>
+        </div>
+        <!--버튼을 옵션을 선택하는 화면을 포함하는 div 태그-->
+        <div class="option">
+          <button type="button" id="hartdeco">하트 데코</button>
+          <button type="button" id="stardeco">별모양 데코</button>
+          <button type="button" id="almonddeco">아몬드 데코</button>
+          <button type="button" id="oreodeco">오레오 데코</button>
+          <button type="button" id="sprinklesdeco">스프링클 데코</button>
+        </div>
+      </div>
+      <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
+        <div class="next">
+          <button type="button" class="return" id="beforeButton">이전 단계</button>
+          <button type="button" class="letter" id="nextButton">다음 단계</button>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      const hartdecoButton = document.getElementById("hartdeco");
+      const stardecoButton = document.getElementById("stardeco");
+      const almonddecoButton = document.getElementById("almonddeco");
+      const oreodecoButton = document.getElementById("oreodeco");
+      const sprinklesdecoButton = document.getElementById("sprinklesdeco");
+      const make3Image = document.getElementById("make3Image");
+
+
+      const decobuttons = [
+        hartdecoButton,
+        stardecoButton,
+        almonddecoButton,
+        oreodecoButton,
+        sprinklesdecoButton,
+      ];
+
+      
+      decobuttons.forEach((button) => {
+        button.style.backgroundColor = "#f7f7f7";
+        button.style.color = "#000";
+      });
+
+      let selectedDeco = null;
+      hartdecoButton.addEventListener("click", function () {
+        selectedDeco="하트"
+        changeButtonStyle(hartdecoButton, "#FF4A4A", "white");
+        loadImage("{% static 'assets/hartdeco.png' %}");
+      });
+
+      stardecoButton.addEventListener("click", function () {
+        selectedDeco="별"
+        changeButtonStyle(stardecoButton, "#FFD80D", "white");
+        loadImage("{% static 'assets/stardeco.png' %}");
+      });
+
+      almonddecoButton.addEventListener("click", function () {
+        selectedDeco="아몬드"
+        changeButtonStyle(almonddecoButton, "#F5D594", "white");
+        loadImage("{% static 'assets/almonddeco.png' %}");
+      });
+
+      oreodecoButton.addEventListener("click", function () {
+        selectedDeco="오레오"
+        changeButtonStyle(oreodecoButton, "#401F00", "white");
+        loadImage("{% static 'assets/oreodeco.png' %}");
+      });
+
+      sprinklesdecoButton.addEventListener("click", function () {
+        selectedDeco="스프링클"
+        changeButtonStyle(sprinklesdecoButton, "#62CBFF", "white");
+        loadImage("{% static 'assets/sprinklesdeco.png' %}");
+      });
+
+      function changeButtonStyle(button, backgroundColor, textColor) {
+        button.style.backgroundColor = backgroundColor;
+        button.style.color = textColor;
+
+        // 다른 버튼의 스타일 초기화
+        decobuttons.forEach((btn) => {
+          if (btn !== button) {
+            btn.style.backgroundColor = "#f7f7f7";
+            btn.style.color = "#000";
+          }
+        });
+      }
+
+      function loadImage(imageSrc) {
+        const newImage = document.createElement("img");
+        newImage.src = imageSrc;
+        newImage.style.position = "absolute";
+        newImage.style.zIndex = 1;
+        newImage.style.top = "-15px";
+        newImage.style.left = "-10px";
+        make3Image.style.position = "relative";
+        make3Image.innerHTML = "";
+        make3Image.appendChild(newImage);
+      }
+
+      const csrfToken = "{{ csrf_token }}";
+      $("#nextButton").click(function () {
+        console.log(selectedDeco)
+        if (selectedDeco) {
+          console.log(selectedDeco)
+          fetch("{% url 'pepero:pepero_deco' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": csrfToken,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ selected_deco: selectedDeco }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = "{% url 'pepero:pepero_letter' %}";
+            })
+            .catch((error) => {
+              console.error("POST 요청 실패: ", error);
+            });
+        } else {
+          console.log(selectedDeco)
+          console.log(selectedDeco)
+          fetch("{% url 'pepero:pepero_deco' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": csrfToken,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ selected_deco: '기본' }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = "{% url 'pepero:pepero_letter' %}";
+            })
+            .catch((error) => {
+              console.error("POST 요청 실패: ", error);
+            });
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const chocoImage = document.getElementById('chocoImage');
+        const selectedChoco = "{{ request.session.selected_choco }}";
+        console.log(selectedChoco)
+        if (selectedChoco === '기본') {
+          chocoImage.style.display = 'none';
+        } else if (selectedChoco === '초코') {
+          chocoImage.src = "{% static 'assets/choco.png' %}";
+        } else if (selectedChoco === '딸기') {
+          chocoImage.src = "{% static 'assets/strawberry.png' %}";
+        } else if (selectedChoco === '화이트') {
+          chocoImage.src = "{% static 'assets/whitechoco.png' %}";
+        } else if (selectedChoco === '녹차') {
+          chocoImage.src = "{% static 'assets/greentea.png' %}";
+        } else {
+          chocoImage.src = "{% static 'assets/blueberry.png' %}";
+        }
+    });
+      document.addEventListener('DOMContentLoaded', function () {
+        const sauceImage = document.getElementById('sauceImage');
+        const selectedSauce = "{{ request.session.selected_sauce }}";
+      
+        if (selectedSauce === '기본') {
+          sauceImage.style.display = 'none';
+        } else {
+          console.log(selectedSauce);
+          if (selectedSauce === '초코시럽') {
+            sauceImage.src = "{% static 'assets/chocosyrup.png' %}";
+          } else if (selectedSauce === '딸기시럽') {
+            sauceImage.src = "{% static 'assets/strawberrysyrup.png' %}";
+          } else if (selectedSauce === '화이트시럽') {
+            sauceImage.src = "{% static 'assets/whitechocosyrup.png' %}";
+          } else if (selectedSauce === '녹차시럽') {
+            sauceImage.src = "{% static 'assets/greenteasyrup.png' %}";
+          } else if (selectedSauce === '블루베리시럽') {
+            sauceImage.src = "{% static 'assets/blueberrysyrup.png' %}";
+          }
+        }
+      });
+    
+      document
+        .getElementById("beforeButton")
+        .addEventListener("click", function () {
+          window.location.href = "{% url 'pepero:pepero_sauce' %}";
+        });
+      
+    </script>
+  </body>
+  {% endblock %}

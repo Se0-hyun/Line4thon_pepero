@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+    {% block title %}메인 화면{% endblock %}
+    {% load static %}
+    {% block content %}
+    <style>
+      body {
+        font-family: "Noto Sans KR", sans-serif;
+        align-items: center;
+        background-color: #faf9f5;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .main-form {
+        width: 390px;
+        height: 844px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header {
+        text-align: center;
+        position: relative;
+        top: 50px;
+      }
+
+      #text1 {
+        font-size: 25px;
+        font-weight: 600;
+        color: #4b2a0b;
+      }
+
+      #text2 {
+        font-size: 20px;
+        font-weight: 600;
+        color: #885c33;
+      }
+
+      .pepero-img img {
+        width: 95%;
+        position: relative;
+        height: 400px;
+      }
+
+      .btn {
+        position: relative;
+        top: -50px;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .make {
+        background-color: rgba(64, 31, 0, 1);
+        color: white;
+        width: 251px;
+        height: 69px;
+        top: 642px;
+        left: 78px;
+        border-radius: 16px;
+      }
+
+      .see {
+        background-color: #decab9;
+        color: #4b2a0b;
+        text-align: center;
+        width: 251px;
+        height: 40px;
+        top: 723px;
+        left: 78px;
+        border-radius: 16px;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="main-form">
+      <div class="header">
+        <p id="text1">너에게 보내는 빼빼로</p>
+        <p id="text2">소중한 마음을 상대에게 전해보세요!</p>
+      </div>
+      <div class="pepero-img">
+        <!-- Replace the src attribute with the correct path to your image -->
+        <img src="{% static 'assets/pepero-main.png' %}" alt="메인화면 빼빼로 이미지" />
+        
+      </div>
+      <div class="btn">
+        <button
+            onclick="window.open('{% url 'pepero:pepero_start' %}')"
+            type="button"
+            class="make"
+        >
+          빼빼로 만들기
+        </button>
+        <button type="button" class="see">빼빼로 보러가기</button>
+      </div>
+    </section>
+  </body>
+  {% endblock %}

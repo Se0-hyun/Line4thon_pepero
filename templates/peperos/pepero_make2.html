@@ -1,0 +1,317 @@
+{% extends 'base.html'%}
+    {% block title %}빼빼로 만들기 2단계{% endblock %}
+    {% load static %}
+    {% block content %}
+  <!--css 파일-->
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      background-color: #faf9f5;
+      display: flex;
+      justify-content: center;
+      align-items:center;
+      flex-direction: column; 
+      min-height: 100vh;
+      overflow: hidden;  
+    }
+
+    .make2-form {
+      width: 390px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      width:70%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #text1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
+      margin: 0 auto;
+    }
+
+    #text2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
+
+    .make2 {
+      width:60%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .show {
+      width: 48%;
+      padding: 10px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center; 
+      align-items: center;
+      position: relative;
+    }
+
+    .option {
+      width: 48%;
+      padding: 10px;
+      margin: auto;
+    }
+
+    .option button {
+      width: 117px;
+      height: 73px;
+      display: block;
+      background-color: #f7f7f7;
+      margin: 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 16px;
+      border: 1px solid #cbcbcb;
+    }
+
+    #pepero1 {
+      height: 477px;
+      width: 40px;
+      position: absolute;
+      
+    }
+    #chocoImage {
+      margin-bottom:130px;
+      position: absolute;
+      z-index: 1;
+    }
+
+    #make2Image {
+      margin: auto;
+      margin-top:20px;
+      margin-right:55px;
+      height: 480px; 
+    }
+
+    #make2Image.img {
+      position: absoulute;
+      z-index: 2;
+    }
+    
+
+    .next {
+      display: flex;
+      justify-content: space-between;
+      width: 70%; 
+      margin: 0 auto; 
+    }
+
+    .return,
+    .make3 {
+      width: 120px;
+      height: 44px;
+      margin-top: 5px;
+      border-radius: 16px;
+      border: 1px solid;
+    }
+
+    .return {
+      background-color: #401f00;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .make3 {
+      background-color: #eaded8;
+      color: #401f00;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+    }
+
+  </style>
+  <body>
+    <!--전체 화면을 포함하는 section 박스-->
+    <section class="make2-form">
+      <!--header를 포함하는 div 태그-->
+      <div class="header">
+        <p id="text1">2단계 : 빼빼로 시럽 뿌리기!</p>
+        <p id="text2">어떤 시럽을 뿌릴까요?<br />버튼을 눌러 선택해주세요!</p>
+      </div>
+      <!--빼빼로를 만드는 화면을 포함하는 div 태그-->
+      <div class="make2">
+        <!--만든 빼빼로를 보여주는 화면을 포함하는 div 태그-->
+        <div class="show">
+          <img src="{% static 'assets/pepero.png' %}" id="pepero1" />
+          <img src="" id ="chocoImage"/>
+          <div id="make2Image"></div>
+        </div>
+        <!--버튼을 옵션을 선택하는 화면을 포함하는 div 태그-->
+        <div class="option">
+          <button type="button" id="chocosyrup">초코시럽</button>
+          <button type="button" id="strawberrysyrup">딸기시럽</button>
+          <button type="button" id="whitechocosyrup">화이트 초코시럽</button>
+          <button type="button" id="greenteasyrup">녹차시럽</button>
+          <button type="button" id="blueberrysyrup">블루베리<br />시럽</button>
+        </div>
+      </div>
+      <!--다음 과정을 선택할 버튼을 포함하는 div 태그-->
+
+        <div class="next">
+          <button type="button" class="return" id="beforeButton">이전 단계</button>
+          <button type="submit" class="make3" id="nextButton">다음 단계</button>
+        </div>
+
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      const chocosyrupButton = document.getElementById("chocosyrup");
+      const strawberrysyrupButton = document.getElementById("strawberrysyrup");
+      const whiteChocosyrupButton = document.getElementById("whitechocosyrup");
+      const greenTeasyrupButton = document.getElementById("greenteasyrup");
+      const blueberryButton = document.getElementById("blueberrysyrup");
+      const make2Image = document.getElementById("make2Image");
+
+      const syrupbuttons = [
+        chocosyrupButton,
+        strawberrysyrupButton,
+        whiteChocosyrupButton,
+        greenTeasyrupButton,
+        blueberryButton,
+      ];
+
+      let selectedSauce = null;
+
+      syrupbuttons.forEach((button) => {
+        button.style.backgroundColor = "#f7f7f7";
+        button.style.color = "#000";
+      });
+
+      chocosyrupButton.addEventListener("click", function () {
+        selectedSauce="초코시럽"
+        changeButtonStyle(chocosyrupButton, "#7D3C0A", "white");
+        loadImage("{% static 'assets/chocosyrup.png' %}");
+      });
+
+      strawberrysyrupButton.addEventListener("click", function () {
+        selectedSauce="딸기시럽"
+        changeButtonStyle(strawberrysyrupButton, "#FFC2C2", "white");
+        loadImage("{% static 'assets/strawberrysyrup.png' %}");
+      });
+
+      whiteChocosyrupButton.addEventListener("click", function () {
+        selectedSauce="화이트시럽"
+        changeButtonStyle(whiteChocosyrupButton, "#EDEBC5", "white");
+        loadImage("{% static 'assets/whitechocosyrup.png' %}");
+      });
+
+      greenTeasyrupButton.addEventListener("click", function () {
+        selectedSauce="녹차시럽"
+        changeButtonStyle(greenTeasyrupButton, "#C1C890", "white");
+        loadImage("{% static 'assets/greenteasyrup.png' %}");
+      });
+
+      blueberryButton.addEventListener("click", function () {
+        selectedSauce="블루베리시럽"
+        changeButtonStyle(blueberryButton, "#BCBED7", "white");
+        loadImage("{% static 'assets/blueberrysyrup.png' %}");
+      });
+
+      function changeButtonStyle(button, backgroundColor, textColor) {
+        button.style.backgroundColor = backgroundColor;
+        button.style.color = textColor;
+
+        // 다른 버튼의 스타일 초기화
+        syrupbuttons.forEach((btn) => {
+          if (btn !== button) {
+            btn.style.backgroundColor = "#f7f7f7";
+            btn.style.color = "#000";
+          }
+        });
+      }
+
+      function loadImage(imageSrc) {
+        const newImage = document.createElement("img");
+        newImage.src = imageSrc;
+        newImage.style.position = "absolute";
+        newImage.style.zIndex = 1;
+        newImage.style.top = "0";
+        newImage.style.left = "0";
+        make2Image.style.position = "relative";
+        make2Image.innerHTML = "";
+        make2Image.appendChild(newImage);
+      }
+
+      const csrfToken = "{{ csrf_token }}";
+      $("#nextButton").click(function () {
+        console.log(selectedSauce)
+        if (selectedSauce) {
+          console.log(selectedSauce)
+          fetch("{% url 'pepero:pepero_sauce' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": csrfToken,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ selected_sauce: selectedSauce }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = "{% url 'pepero:pepero_deco' %}";
+            })
+            .catch((error) => {
+              console.error("POST 요청 실패: ", error);
+            });
+        } else {
+          console.log(selectedSauce)
+          console.log(selectedSauce)
+          fetch("{% url 'pepero:pepero_sauce' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": csrfToken,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ selected_sauce: '기본' }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.href = "{% url 'pepero:pepero_deco' %}";
+            })
+            .catch((error) => {
+              console.error("POST 요청 실패: ", error);
+            });
+        }
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const chocoImage = document.getElementById('chocoImage');
+        const selectedChoco = "{{ request.session.selected_choco }}";
+        console.log(selectedChoco)
+        if (selectedChoco === '기본') {
+          chocoImage.src = "{% static 'assets/pepero.png' %}";
+        } else if (selectedChoco === '초코') {
+          chocoImage.src = "{% static 'assets/choco.png' %}";
+        } else if (selectedChoco === '딸기') {
+          chocoImage.src = "{% static 'assets/strawberry.png' %}";
+        } else if (selectedChoco === '화이트') {
+          chocoImage.src = "{% static 'assets/whitechoco.png' %}";
+        } else if (selectedChoco === '녹차') {
+          chocoImage.src = "{% static 'assets/greentea.png' %}";
+        } else {
+          chocoImage.src = "{% static 'assets/blueberry.png' %}";
+        }
+    });
+
+    document
+        .getElementById("beforeButton")
+        .addEventListener("click", function () {
+          window.location.href = "{% url 'pepero:pepero_choco' %}";
+        });
+    </script>
+  </body>
+  {% endblock %}

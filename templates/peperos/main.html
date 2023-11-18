@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+    {% block title %}메인 화면{% endblock %}
+    {% load static %}
+    {% block content %}
+  <!--css 파일-->
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+        background-color: #faf9f5;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column; 
+        min-height: 100vh;
+        overflow: hidden;  
+    }
+
+    .main-form {
+      width: 390px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header {
+      align-items: center;
+      justify-content: center;
+    }
+
+    #text1 {
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
+      margin: 0 auto;
+    }
+
+    #text2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
+
+    .make2 {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .pepero-show {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 5%;
+    }
+
+
+    #main1, #main2, #main3, #main4, #main5 {
+      margin:  auto 5px; 
+      filter: drop-shadow(2px 2px 2px #000);
+    }
+
+    .next{
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      margin-top: 10%;
+    }
+
+
+    #make_pepero {
+      
+      align-items: center;
+      width: 250px;
+      height: 50px;
+      margin-bottom: 10px;
+      border-radius: 16px;
+      border: 1px solid;
+      background-color: #401f00;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    #watch_pepero {
+      align-items: center;
+      width: 250px;
+      height: 50px;
+      margin-bottom: 10px;
+      border-radius: 16px;
+      border: 1px solid;
+      background-color: #eaded8;
+      color: #401f00;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+    }
+  </style>
+
+  <body>
+    <!--전체 화면을 포함하는 section 박스-->
+    <section class="main-form">
+      <!--header를 포함하는 div 태그-->
+      <div class="header">
+        <p id="text1">너에게 보내는 빼빼로</p>
+        <p id="text2">소중한 마음을 익명으로 보내주세요!</p>
+      </div>
+      <!--빼빼로를 보여주는 div 태그-->
+      <div class="pepero-show">
+        <div class="pepero">
+          <img src="{% static 'assets/main1.png' %}" id="main1" />
+          <img src="{% static 'assets/main2.png' %}" id="main2" />
+          <img src="{% static 'assets/main3.png' %}" id="main3" />
+          <img src="{% static 'assets/main4.png' %}" id="main4" />
+          <img src="{% static 'assets/main5.png' %}" id="main5" />
+        </div>
+      </div>
+
+      <!--버튼으로 옵션을 선택하는 화면을 보여주는 div 태그-->
+      <div class="next">
+        <button type="button" id="make_pepero">빼빼로 만들기</button>
+        <button type="button" id="watch_pepero">빼빼로 보러가기</button>
+      </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+      document
+        .getElementById("make_pepero")
+        .addEventListener("click", function () {
+          window.location.href = "{% url 'pepero:pepero_start' %}";
+        });
+        
+        document
+        .getElementById("watch_pepero")
+        .addEventListener("click", function () {
+          window.location.href = "{% url 'pepero:pepero_list' %}";
+        });
+      
+    </script>
+  </body>
+{% endblock %}

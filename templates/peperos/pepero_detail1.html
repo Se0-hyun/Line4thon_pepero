@@ -1,0 +1,223 @@
+{% extends 'base.html'%}
+{% block title %}빼빼로 단계 1단계{% endblock %}
+{% load static %}
+{% block content %}
+  <!--css 파일-->
+  <style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+      align-items: center;
+      background-color: #faf9f5;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .message-form {
+      width: 390px;
+      height: 844px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      padding-top: 70px;
+      align-items: center;
+      justify-content: center;
+      font-family: Inter;
+      margin-bottom: 50px;
+    }
+    p {
+      font-size: 25px;
+      font-weight: 600;
+      color: #4b2a0b;
+    }
+
+    .pepero-element {
+      position: absolute;
+      z-index: 1;
+      transform: rotate(-5deg); 
+      margin-left: -5px;
+    }
+
+    .choco-image {
+      position: absolute;
+      margin-left: -3px;
+      z-index: 2;
+      transform: rotate(-5deg); 
+    margin-left: -13px;
+    }
+
+    .deco-image {
+      position: absolute;
+      /* margin-left: 16px; */
+      margin-top: 10px;
+      z-index: 3;
+      transform: rotate(-5deg); 
+      margin-left: -16px;
+    }
+
+    .sauce-image {
+      position: absolute;
+      margin-top: 20px;
+      margin-left: 5px;
+      z-index: 4;
+      transform: rotate(-5deg); 
+    margin-left: -5px;
+    }
+
+    .output-wrapper {
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border: 16px solid rgba(234, 222, 216, 1) !important;
+    border-radius: 20px;
+    background-color: white;
+    padding: 15px 10px;
+    font-size: 16px;
+    outline: none;
+    width: 250px;
+    height: 280px;
+    top: 42px;
+    left: 30px;
+}
+
+#titleOutput {
+  position: relative;
+  top:0;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  border:none;
+  border-right:0px;
+  border-top:0px;
+  border-left:0px;
+  border-bottom:0px;
+  width: 90%;
+  height: 20px;
+  padding: 10px;
+  padding-left: 20px;
+
+}
+
+
+
+#messageOutput {
+    position: relative;
+    top: 5px;
+    width: 90%;
+    height: 200px;
+    padding: 10px;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    resize: none;
+    border: none;
+    border-right: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+}
+
+.letter-button {
+  color: white;
+  background-color: #EADED8;
+  flex-shrink: 0;
+  width: 240px;
+  height: 50px;
+  cursor: pointer;
+  position: relative;
+  top: 150px;
+  margin-left:30px;
+  border: none;
+  border-radius: 20px;
+  color: rgba(64, 31, 0, 1);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+  </style>
+  <body>
+    <section class="message-form">
+      <header>
+        <p>마음을 담은 빼빼로가 도착했어요!</p>
+      </header>
+      <div id="message">
+        <div id="peperoMessage">
+          <img
+          src="{% static 'assets/pepero.png' %}"
+            class="pepero-element"
+            id="peperoBase"
+            alt="빼빼로기본"
+          />
+          <img
+            src="{% if letter_detail.choco == '기본' %}{% static 'assets/pepero.png' %}
+            {% elif letter_detail.choco == '초코' %}{% static 'assets/choco.png' %}
+            {% elif letter_detail.choco == '딸기' %}{% static 'assets/strawberry.png' %}
+            {% elif letter_detail.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
+            {% elif letter_detail.choco == '녹차' %}{% static 'assets/greentea.png' %}
+            {% else %}{% static 'assets/blueberry.png' %}
+            {% endif %}"
+            class="choco-image"
+            id="chocoImage"
+            alt="초콜릿"
+          />
+          <img
+          {% if letter_detail.sauce != '기본' %}
+            src="{% if letter_detail.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+            {% elif letter_detail.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+            {% elif letter_detail.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+            {% elif letter_detail.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+            {% elif letter_detail.sauce == '블루베리시럽' %}{% static 'assets/blueberrysyrup.png' %}
+            {% endif %}"
+            class="sauce-image"
+            id="sauceImage"
+          {% endif %}
+        />
+
+
+        <img
+        {% if letter_detail.deco != '기본' %}
+          src="{% if letter_detail.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+          {% elif letter_detail.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+          {% elif letter_detail.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+          {% elif letter_detail.deco == '별' %}{% static 'assets/stardeco.png' %}
+          {% elif letter_detail.deco == '스프링클' %}{% static 'assets/sprinklesdeco.png' %}{% endif %}"
+          id="decoImage"
+          class="deco-image"
+          alt="토핑"
+        {% endif %}
+        />
+
+          <div class="output-wrapper">
+            <p1 id="titleOutput">{{ letter_detail.title }}</p1>
+            <p2 id="messageOutput" rows="4">{{ letter_detail.content }}</p2>
+          </div>
+
+        </div>
+      </div>
+      <button id="letter_one" class="letter-button">
+        이전으로
+    </button>
+    </section>
+
+    <script>
+        document.getElementById("letter_one")
+                  .addEventListener("click" ,function(){
+                      window.location.href = "{% url 'pepero:pepero_list' %}"
+        });
+      </script>
+    
+  </body>
+  {% endblock %}

@@ -1,0 +1,262 @@
+{% extends 'base.html' %}
+{% block title %}빼빼로 리스트1{% endblock %}
+{% load static %}
+{% block content %}
+
+<style>
+    body {
+      font-family: "Noto Sans KR", sans-serif;
+        background-color: #faf9f5;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column; 
+        min-height: 100vh;
+        overflow: hidden; 
+    }
+
+    .pepero-form {
+      width: 390px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: 600;
+      text-align: center;
+      color: #4b2a0b;
+      margin: 0 auto;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      text-align: center;
+      color: #885c33;
+    }
+
+    .pepero-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* justify-content: flex-start; */
+      {% comment %} padding: 20px 10px; {% endcomment %}
+      /* font-size: 16px; */
+      /* outline: none; */
+      width: 380px;
+      height: 439px;
+    }
+
+    .pepero-show {
+      display: flex;
+      justify-content: space-between;
+      width: 70%;
+      margin-top: 50%;
+      margin: 0 auto; 
+      position: relative;
+      gap: -5px;
+      height: 50vh;
+    }
+
+    .pepero-show a {
+      margin-left: 5.25px;
+      flex: 0.17;
+      margin-right: 6px;
+    }
+
+    .pepero-element {
+      position: absolute;
+      z-index: 1;
+      height: 100%; 
+    }
+
+    .choco-image {
+      position: absolute;
+      z-index: 2;
+      height: 80%; 
+      margin-left:-3px;
+    }
+
+    .deco-image {
+      position: absolute;
+      z-index: 3;
+      height: 70%;
+      margin-left: -5px;
+    }
+
+    .sauce-image {
+      position: absolute;
+      z-index: 4;
+      height: 80%; 
+    }
+
+
+
+    .messageButton {
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+
+    }
+
+
+    .lists{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+    }
+
+    .main-button {
+        {% comment %} color: white;
+        background-color: rgba(64, 31, 0, 1);
+        flex-shrink: 0;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+        position: relative;
+        top: px;
+        border: none;
+        color: var(--mainWH, #fff);
+        text-align: center;
+        font-family: Pretendard;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal; {% endcomment %}
+
+        align-items: center;
+      width: 250px;
+      height: 50px;
+      margin-bottom: 10px;
+      border-radius: 16px;
+      border: 1px solid;
+      background-color: #401f00;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .letter-button {
+        {% comment %} color: white;
+        background-color: #EADED8;
+        flex-shrink: 0;
+        width: 250px;
+        height: 50px;
+        cursor: pointer;
+        position: relative;
+        top: 15px;
+        border: none;
+        border-radius: 20px;
+        color: rgba(64, 31, 0, 1);
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal; {% endcomment %}
+
+        align-items: center;
+        width: 250px;
+        height: 50px;
+        margin-bottom: 10px;
+        border-radius: 16px;
+        border: 1px solid;
+        background-color: #eaded8;
+        color: #401f00;
+        font-size: 15px;
+        font-weight: 600;
+        border: none;
+    }
+
+    .peperoBase{
+      height: 477px;
+      /* gap: -2px; */
+    }
+    .next{
+      display: flex;
+      flex-direction: column; 
+      align-items: center; 
+      margin-top: 10%;
+    }
+    
+</style>
+    <section class="pepero-form">
+        <header>
+            <h1>받은 빼빼로들을 확인해볼까요?</h1>
+            <h3>
+                마음이 담긴 빼빼로와 편지들이  {{ pepero_lists.count }}개 도착했어요!<br />
+                지금 바로 확인해보세요!
+            </h3>
+        </header>
+
+        <div class="pepero-show">
+
+          {% for pepero in pepero_lists|slice:"5" %}
+              <a href="{% url 'pepero:pepero_one_detail' pepero.id %}">
+                <img src="{% static 'assets/pepero.png' %}" class="pepero-element" id="peperoBase">
+                <img src="{% if pepero.choco == '기본' %}
+                    {% elif pepero.choco == '초코' %}{% static 'assets/choco.png' %}
+                    {% elif pepero.choco == '딸기' %}{% static 'assets/strawberry.png' %}
+                    {% elif pepero.choco == '화이트' %}{% static 'assets/whitechoco.png' %}
+                    {% elif pepero.choco == '녹차' %}{% static 'assets/greentea.png' %}
+                    {% else %}{% static 'assets/blueberry.png' %}
+                    {% endif %}" class="choco-image" id="chocoImage"/>
+
+
+                    <img
+                    {% if pepero.sauce != '기본' %}
+                      src="{% if pepero.sauce == '초코시럽' %}{% static 'assets/chocosyrup.png' %}
+                      {% elif pepero.sauce == '딸기시럽' %}{% static 'assets/strawberrysyrup.png' %}
+                      {% elif pepero.sauce == '화이트시럽' %}{% static 'assets/whitechocosyrup.png' %}
+                      {% elif pepero.sauce == '녹차시럽' %}{% static 'assets/greenteasyrup.png' %}
+                      {% elif pepero.sauce == '블루베리시럽' %}{% static 'assets/blueberrysyrup.png' %}
+                      {% endif %}"
+                      class="sauce-image"
+                      id="sauceImage"
+                    {% endif %}
+                  />
+
+
+                  <img
+                  {% if pepero.deco != '기본' %}
+                    src="{% if pepero.deco == '아몬드' %}{% static 'assets/almonddeco.png' %}
+                    {% elif pepero.deco == '오레오' %}{% static 'assets/oreodeco.png' %}
+                    {% elif pepero.deco == '하트' %}{% static 'assets/hartdeco.png' %}
+                    {% elif pepero.deco == '별' %}{% static 'assets/stardeco.png' %}
+                    {% elif pepero.deco == '스프링클' %}{% static 'assets/sprinklesdeco.png' %}{% endif %}"
+                    id="decoImage"
+                    class="deco-image"
+                    alt="토핑"
+                  {% endif %}
+                  />
+          </a>
+          {% endfor %}
+        </div>
+        
+        <div class="next">
+          <button id= "main" class="main-button">메인 화면으로</button>
+          <button id="letter" class="letter-button">한눈에 보기</button>
+        </div>
+
+        <script>
+          document.getElementById("main")
+                  .addEventListener("click", function(){
+                      window.location.href = "{% url 'pepero:pepero_home' %}"
+                  });
+  
+          document.getElementById("letter")
+                  .addEventListener("click" ,function(){
+                      window.location.href = "{% url 'pepero:letters_list' %}"
+                  });
+      </script>
+      </section>
+{% endblock %}
