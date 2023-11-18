@@ -23,9 +23,9 @@
   </tr>
   <tr width="100%">
   <td  align="center">UX/UI</td>
-    <td  align="center">Front-End/td>
+    <td  align="center">Front-End</td>
   <td  align="center">Front-End</td>
-  <td  align="center">Back-End/td>
+  <td  align="center">Back-End</td>
     <td  align="center">Back-End</td>
      </tr>
       <tr width="100%">
