@@ -2,6 +2,7 @@
 
 ### 서비스 한 줄 소개
 #### 빼빼빼로 데이, 빼빼로를 직접 만들고 편지를 작성하여 당신의 마음을 표현해보세요!
+###
 
 ### 🙆🏻‍♀️ 팀원 소개
 
@@ -31,6 +32,8 @@
      </tr>
   </table>
 
+###
+
 ### 👨🏻‍💻 기술 스택
 
   <span>Environment: </span><img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
@@ -47,6 +50,7 @@
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 
+###
 
 ### 📌실행 방법
 #### python -m venv venv  // 가상환경 생성 
